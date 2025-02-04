@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import CommentBox from '../components/Comment';
 
 export default function DeatilsPage() {
     return(
@@ -9,8 +10,10 @@ export default function DeatilsPage() {
     {/* Header section */}
     <div className="relative font-[sans-serif] pt-20 before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
       <Image
-        src="unsplash_4ycv3Ky1ZZU.png"
+        src="/unsplash_4ycv3Ky1ZZU.png"
         alt="Banner Image"
+        width={500}
+        height={500}
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="min-h-[350px] relative z-50 h-full  max-w-4xl mx-auto flex flex-col justify-center items-center text-center p-6">
@@ -112,13 +115,13 @@ export default function DeatilsPage() {
             alt=''
             width={872}
             height={60}
-            className='mt-10 ml-[20px]'
+            className='mt-10 ml-[20px] mb-20'
             /></Link>
             
 
             {/* Comment Section */}
 
-            <div className='w-[872px] h-[472px] mt-10 ml-[20px]'>
+            {/* <div className='w-[872px] h-[472px] mt-10 ml-[20px]'>
                 <h1 className='text-2xl font-bold'>Comments - 03</h1>
                 <div className='w-[872px] h-[472px] mt-10'>
                     <Image 
@@ -145,11 +148,11 @@ export default function DeatilsPage() {
                     className='cursor-pointer mt-5'
                     />
                 </div>
-            </div>
+            </div> */}
              
                {/* Post a comment */}
             
-            <div className='w-[872px] h-[424px] mt-5  ml-[20px]'>
+            {/* <div className='w-[872px] h-[424px] mt-5  ml-[20px]'>
                 <h1 className='text-xl border-b-[1px] h-10 border-[#E0E0E0] font-bold'>Post a Comment</h1>
                 <div className='w-[872px] mt-5 flex h-[80px]'>
                     <input 
@@ -172,7 +175,9 @@ export default function DeatilsPage() {
 
                 <button className='w-[212px] h-[56px] ease-in-out duration-500 bg-[#FF9F0D] hover:bg-[#ffff] hover:text-[#4F4F4F] text-white mt-10'>Post a Comment</button>
 
-            </div>
+            </div> */}
+            <CommentBox/>
+           
     </div>
 
 
@@ -326,7 +331,7 @@ export default function DeatilsPage() {
                 <div className='w-[308px] mt-[25px] ml-10 h-[94px] items-center cursor-pointer'>
                   <h1 className='text-2xl font-bold'>Follow us</h1>
                   <Link href="https://www.facebook.com/">
-                  <Image src="Sociali icon.png" alt="social icons" className="w-[80px] lg:h-[90px] lg:w-[300px]" />
+                  <Image src="/Sociali icon.png" width={80} height={20} alt="social icons" className="w-[80px] lg:h-[90px] lg:w-[300px]" />
                   </Link> 
                   
                 </div>

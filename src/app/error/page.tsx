@@ -29,7 +29,7 @@ export default function Menu() {
 
           {/* error page */}
           <div className="lg:w-[630px] lg:h-[300px] h-fit lg:m-20 mt-5 mb-5 flex flex-col items-center justify-center lg:ml-auto lg:mr-auto gap-2 lg:gap-10">
-            <Image src="/404.svg" alt="404 pic" className="w-[161px] h-[104px]"/>
+            <Image src="/404.svg" alt="404 pic" width={161} height={104} className="w-[161px] h-[104px]"/>
             <p className="lg:text-3xl md:text-2xl text-xl p-1 text-[#333] fonr-bold">OOPS! Looks like Something going wrong</p>
             <p className="lg:w-[490px] p-1 ">Page Cannot be found! we&apos;ll have it figured out in no time.
             Menwhile, cheek out these fresh ideas:</p>

@@ -9,7 +9,9 @@ export default function BlogPage() {
                 {/* Header */}
                 <div className="relative font-[sans-serif] pt-20 before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
                     <Image
-                        src="unsplash_4ycv3Ky1ZZU.png"
+                        src="/unsplash_4ycv3Ky1ZZU.png"
+                        width={500}
+                        height={500}
                         alt="Banner Image"
                         className="absolute inset-0 w-full h-full object-cover"
                     />
@@ -32,8 +34,8 @@ export default function BlogPage() {
                         <Image 
                             src='/blog1.svg'
                             alt=''
-                            width={871}
-                            height={520}
+                            width={700}
+                            height={600}
                             className='mt-10 mx-4 lg:mx-5'
                         />
                         <div className='flex mt-3'>
@@ -72,8 +74,8 @@ export default function BlogPage() {
                         <Image 
                             src='/blog2.svg'
                             alt=''
-                            width={871}
-                            height={520}
+                            width={700}
+                            height={600}
                             className='mt-10 mx-4 lg:mx-5'
                         />
                         <div className='flex mt-3'>
@@ -112,8 +114,8 @@ export default function BlogPage() {
                         <Image 
                             src='/blog3.svg'
                             alt=''
-                            width={871}
-                            height={520}
+                            width={700}
+                            height={600}
                             className='mt-10 mx-4 lg:mx-5'
                         />
                         <div className='flex mt-3'>
@@ -153,8 +155,8 @@ export default function BlogPage() {
                         <Image 
                             src='/blog4.svg'
                             alt=''
-                            width={871}
-                            height={520}
+                            width={700}
+                            height={600}
                             className='mt-10 mx-4 lg:mx-5'
                         />
                         <div className='flex mt-3'>
@@ -191,8 +193,8 @@ export default function BlogPage() {
                         </div>
                     </div>
 
-                    <div className='w-full lg:w-[424px] mt-[130px] h-auto'>
-                        <div className='flex justify-center mt-8 w-full lg:w-[421.82px] border-1 h-[70px]'>
+                    <div className='ml-[-240px] lg:w-[424px] mt-[130px] h-auto'>
+                        <div className='flex justify-center mt-8  lg:w-[421.82px] border-1 h-[70px]'>
                             <input 
                                 placeholder='Search Your Keyword Here'
                                 type="text"
@@ -304,7 +306,7 @@ export default function BlogPage() {
                          {/* icons Tag */}
                         <div className="bg-[#4F4F4F] w-full mt-10 lg:pl-24 lg:pr-24 lg:mt-20 py-4 flex flex-col lg:flex-row justify-center lg:justify-between items-center lg:gap-4">
                          <Link href="https://www.facebook.com/">
-                         <Image src="Sociali icon.png" alt="social icons" className="w-[80px] lg:w-[200px]" />
+                         <Image src="/Sociali icon.png" width={80} height={80} alt="social icons" className="w-[80px] lg:w-[200px]" />
                          </Link> 
                         </div>
                     </div>

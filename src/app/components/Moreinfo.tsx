@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import CommentBox from "./Comment";
 import Link from "next/link";
 
 // Define the prop type for `slug`
@@ -49,7 +50,9 @@ const TabComponent = ({ slug }: TabComponentProps) => {
 
         {activeTab === "reviews" && (
           <div className="mb-20">
-            <p className="mt-10 ml-[160px] mr-20 text-justify">amazing food</p>
+            <p className="mt-10 ml-[160px] mr-20 text-justify">
+              <CommentBox/>
+            </p>
           </div>
         )}
       </div>

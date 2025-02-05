@@ -89,13 +89,14 @@ const Cart = () => {
                     >
                       -
                     </button>
-                    <span className="text-lg">{item.quantity}</span> {/* Show Quantity */}
+                    <span className="text-lg">{item.quantity}</span> 
                     <button
                       onClick={() => updateQuantity(item, item.quantity + 1)}
                       className="px-2 py-1 bg-gray-300 "
                     >
                       +
                     </button>
+                    {/* <QuantityInput/> */}
                   </div>
                 </div>
               </div>

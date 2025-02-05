@@ -1,18 +1,22 @@
-// ProductDetail.tsx
-import { client } from "@/sanity/lib/client";
+// src/app/shop/[slug]/page.tsx
+import { client } from "@/sanity/lib/client"; 
 import ProductDetailClient from "./productdetail"; // Import client-side component
-import { FoodItem } from "../../../../types"; // Define the FoodItem type
+import { FoodItem } from "../../../../types"; // Ensure FoodItem is imported correctly
 
 const query = `*[_type == "food" && slug.current == $slug][0]{
   name, category,
-  price,tags, available,
+  price, tags, available,
   "description": description,
   "image_url": image.asset->url
 }`;
 
-export default async function ProductDetail({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  
+interface ProductDetailProps {
+  params: { slug: string };  // Typing for the params
+}
+
+export default async function ProductDetail({ params }: ProductDetailProps) {
+  const { slug } = params; // Directly accessing 'slug' (no need for 'await')
+
   // Fetch product data from Sanity
   const product: FoodItem | null = await client.fetch(query, { slug });
 
@@ -21,5 +25,5 @@ export default async function ProductDetail({ params }: { params: { slug: string
   }
 
   // Pass fetched data to the client-side component
-  return <ProductDetailClient product={product} slug={""} />;
+  return <ProductDetailClient product={product} />;
 }

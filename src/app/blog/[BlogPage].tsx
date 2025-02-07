@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function BlogPage() {
     const router = useRouter();
     const [page, setPage] = useState(1); // Start on page 1 by default
+    const totalPages = 5; // Define the total number of pages
 
     // When the page loads or the page changes in the URL, update the page state
     useEffect(() => {
@@ -25,7 +27,7 @@ export default function BlogPage() {
     };
 
     return (
-        <>
+        <div>
             <div className="min-w-full overflow-hidden">
                 {/* Header */}
                 <div className="relative font-[sans-serif] pt-20 before:absolute lg:h-full h-[300px] before:w-full before:h-full before:inset-0 bg-black before:z-[-10]">
@@ -100,7 +102,7 @@ export default function BlogPage() {
                             <p className="w-full lg:w-[647.26px] h-[96px] py-[40px] bg-white lg:mt-0 mt-[-70px] lg:mb-0 mb-10">
                                 At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor, sit amet consectetur adipisicing delectus possimus in provident aspernatur ullam oluptas 
                             </p>
-                            <Link href={`/pages`}>
+                            <Link href={"/pages"}>
                                 <button className="w-full lg:w-[172px] h-[52px] rounded-[6px] border-[1px] mt-[50px] md:mt-[30px] lg:mt-[30px] py-[14px] px-[32px] text-[#FF9F0D] border-[#FF9F0D]">
                                     Read More
                                 </button>
@@ -369,45 +371,36 @@ export default function BlogPage() {
                 </div>
 
                 {/* Pagination */}
-                <ul className="flex space-x-5 justify-center font-[sans-serif] mt-16 mb-16">
-                    {/* Left arrow for previous page */}
-                    <li
-                        onClick={() => handlePageChange(page - 1)}
-                        className={`flex items-center justify-center shrink-0 bg-gray-100 w-9 h-9 rounded-md ${page <= 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-3 fill-[#FF9F0D]" viewBox="0 0 55.753 55.753">
-                            <path
-                                d="M12.745 23.915c.283-.282.59-.52.913-.727L35.266 1.581a5.4 5.4 0 0 1 7.637 7.638L24.294 27.828l18.705 18.706a5.4 5.4 0 0 1-7.636 7.637L13.658 32.464a5.367 5.367 0 0 1-.913-.727 5.367 5.367 0 0 1-1.572-3.911 5.369 5.369 0 0 1 1.572-3.911z"
-                            />
-                        </svg>
-                    </li>
 
-                    {/* Page Numbers */}
-                    {[1, 2, 3].map((pageNum) => (
-                        <li
-                            key={pageNum}
-                            onClick={() => handlePageChange(pageNum)}
-                            className={`flex items-center justify-center shrink-0 text-black border cursor-pointer text-base font-bold px-[13px] h-9 rounded-md ${
-                                page === pageNum ? 'bg-[#FF9F0D] text-gray-800' : 'bg-gray-100 hover:border-[#FF9F0D]'
-                            }`}
-                        >
-                            {pageNum}
-                        </li>
-                    ))}
-
-                    {/* Right arrow for next page */}
-                    <li
-                        onClick={() => handlePageChange(page + 1)}
-                        className="flex items-center justify-center shrink-0 bg-gray-100 w-9 h-9 rounded-md cursor-pointer"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-3 fill-gray-400 rotate-180" viewBox="0 0 55.753 55.753">
-                            <path
-                                d="M12.745 23.915c.283-.282.59-.52.913-.727L35.266 1.581a5.4 5.4 0 0 1 7.637 7.638L24.294 27.828l18.705 18.706a5.4 5.4 0 0 1-7.636 7.637L13.658 32.464a5.367 5.367 0 0 1-.913-.727 5.367 5.367 0 0 1-1.572-3.911 5.369 5.369 0 0 1 1.572-3.911z"
-                            />
-                        </svg>
-                    </li>
-                </ul>
+      <ul className="flex justify-center items-center space-x-2 mt-10 mb-20 ">
+        {/* Left arrow for previous page */}
+        <li
+          onClick={() => handlePageChange(page - 1)}
+          className={`flex items-center justify-center shrink-0 bg-gray-100 w-9 h-9 rounded cursor-pointer transition-all hover:bg-gray-200 ${page === 1 ? "pointer-events-none opacity-50" : ""}`}
+        >
+          <FaChevronLeft />
+        </li>
+        
+        {/* Page numbers */}
+        {Array.from({ length: totalPages }, (_, index) => (
+          <li
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            className={`flex items-center justify-center shrink-0 bg-gray-100 w-9 h-9 rounded cursor-pointer transition-all hover:bg-gray-200 ${page === index + 1 ? "bg-gray-300" : ""}`}
+          >
+            {index + 1}
+          </li>
+        ))}
+        
+        {/* Right arrow for next page */}
+        <li
+          onClick={() => handlePageChange(page + 1)}
+          className={`flex items-center justify-center shrink-0 bg-gray-100 w-9 h-9 rounded cursor-pointer transition-all hover:bg-gray-200 ${page === totalPages ? "pointer-events-none opacity-50" : ""}`}
+        >
+          <FaChevronRight />
+        </li>
+      </ul>
             </div>
-        </>
+        </div>
     );
 }

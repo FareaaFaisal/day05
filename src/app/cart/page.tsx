@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
 import { useCart } from "@/app/context/CartContext";
 import Link from "next/link";

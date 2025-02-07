@@ -3,8 +3,9 @@
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
-const PaymentSuccess = () => {
+const PaymentSuccessContent = () => {
     const searchParams = useSearchParams();
     const amount = searchParams.get("amount");
 
@@ -53,6 +54,14 @@ const PaymentSuccess = () => {
                 </div>
             </div>
         </div>
+    );
+};
+
+const PaymentSuccess = () => {
+    return (
+        <Suspense fallback={<div className="text-center p-10 text-gray-500">Loading payment details...</div>}>
+            <PaymentSuccessContent />
+        </Suspense>
     );
 };
 

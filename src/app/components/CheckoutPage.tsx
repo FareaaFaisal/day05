@@ -9,7 +9,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
     const myhost = window.location.host
     const URL = myhost === 'localhost:3000' 
         ? 'http://localhost:3000' 
-        : 'https://stripe-payment-one-nu.vercel.app'
+        : 'https://stripe-payment-one-nu.vercel.app/'
 
     const stripe = useStripe()
     const elements = useElements()

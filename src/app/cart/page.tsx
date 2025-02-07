@@ -1,44 +1,47 @@
 "use client";
+
+import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
-import { useCart } from "@/app/context/CartContext"; // Import useCart hook
+import { useCart } from "@/app/context/CartContext";
 import Link from "next/link";
 import Image from "next/image";
-import CheckoutWrapper from "../components/CheckoutWrapper"; // Import CheckoutWrapper instead of CheckoutPage
+import CheckoutWrapper from "@/app/components/CheckoutWrapper";
 
 const Cart = () => {
-  const { cartItems, removeFromCart, updateQuantity } = useCart(); // Access cart items and remove function
-  const [isCheckout, setIsCheckout] = useState(false); // State to control checkout view
-
+  const { cartItems, removeFromCart, updateQuantity } = useCart();
+  const [isCheckout, setIsCheckout] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
-  // This effect ensures `CheckoutPage` is only rendered on the client
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  if (!isClient) return null;
+
   if (cartItems.length === 0) {
     return (
-      <div className="relative font-[sans-serif] pt-20 before:absolute before:w-full before:h-full before:inset-0 bg-black  before:z-[-10] "> {/* Adjusted mt */}
-      <Image
-        src="/unsplash_4ycv3Ky1ZZU.png"
-        alt="Banner Image"
-        width={500}
-        height={500}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="min-h-[350px] relative z-50 h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center p-6 mt-[150px]">
-        <h2 className="text-white md:text-5xl text-3xl font-bold mb-8">
-          Cart
-        </h2>
-        <div className="flex items-center space-x-2 text-white">
-          <Link href="/" className="text-white">Home</Link>
-          <span className="text-white"> &gt; </span>
-          <Link href="/about" className="text-orange-500">Cart</Link>
+      <div className="relative font-[sans-serif] pt-20 before:absolute before:w-full before:h-full before:inset-0 bg-black before:z-[-10]">
+        <Image
+          src="/unsplash_4ycv3Ky1ZZU.png"
+          alt="Banner Image"
+          width={500}
+          height={500}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="min-h-[350px] relative z-50 h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center p-6 mt-[150px]">
+          <h2 className="text-white md:text-5xl text-3xl font-bold mb-8">Cart</h2>
+          <div className="flex items-center space-x-2 text-white">
+            <Link href="/" className="text-white">Home</Link>
+            <span className="text-white"> &gt; </span>
+            <Link href="/cart" className="text-orange-500">Cart</Link>
+          </div>
         </div>
       </div>
-    </div>
     );
   }
+
+  // Calculate total price
+  const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div>
@@ -55,7 +58,7 @@ const Cart = () => {
           <div className="flex items-center space-x-2 text-white">
             <Link href="/" className="text-white">Home</Link>
             <span className="text-white"> &gt; </span>
-            <Link href="/menu" className="text-orange-500">Cart</Link>
+            <Link href="/cart" className="text-orange-500">Cart</Link>
           </div>
         </div>
       </div>
@@ -76,8 +79,6 @@ const Cart = () => {
                 <div>
                   <h3 className="text-xl font-semibold">{item.name}</h3>
                   <p className="text-gray-500">{item.description}</p>
-
-                  {/* Displaying Quantity */}
                   <div className="flex items-center gap-10 mt-2">
                     <p className="text-lg font-bold">${item.price.toFixed(2)}</p>
                     <button
@@ -97,7 +98,7 @@ const Cart = () => {
                   </div>
                 </div>
               </div>
-              
+
               <button
                 onClick={() => removeFromCart(item)}
                 className="text-red-500 hover:text-red-700"
@@ -110,12 +111,10 @@ const Cart = () => {
 
         {/* Checkout Section */}
         <div className="mt-8">
-          <h3 className="text-xl font-semibold">
-            Total: ${cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}
-          </h3>
-          {/* Conditionally render CheckoutWrapper */}
+          <h3 className="text-xl font-semibold">Total: ${totalAmount.toFixed(2)}</h3>
+
           {isCheckout ? (
-            isClient && <CheckoutWrapper /> // Ensure it's only rendered on the client
+            <CheckoutWrapper amount={totalAmount * 100} /> // Convert to cents
           ) : (
             <button
               className="mt-4 px-6 py-3 bg-[#FF9F0D] text-white"

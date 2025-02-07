@@ -5,25 +5,25 @@ export default function Menu() {
     return(
         <div className="w-full overflow-hidden">
         {/* First Section: Image and Breadcrumb */}
-        <div className="relative font-[sans-serif] pt-20 before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
-          <Image
-            src="/unsplash_4ycv3Ky1ZZU.png"
-            width={500}
-            height={500}
-            alt="Banner Image"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="min-h-[350px] relative z-50 h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center p-6">
-            <h2 className="text-white md:text-5xl text-3xl font-bold mb-8">
-              404 Error
-            </h2>
-            <div className="flex items-center space-x-2 text-white">
-              <Link href="/" className="text-white">Home</Link>
-              <span className="text-white"> &gt; </span>
-              <Link href="/menu" className="text-orange-500">404</Link>
-              </div>
-            </div>
+        <div className="relative font-[sans-serif] pt-20 before:absolute before:w-full before:h-full before:inset-0 bg-black  before:z-[-10] "> {/* Adjusted mt */}
+        <Image
+          src="/unsplash_4ycv3Ky1ZZU.png"
+          alt="Banner Image"
+          width={500}
+          height={500}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="min-h-[350px] relative z-50 h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center p-6 mt-[150px]">
+          <h2 className="text-white md:text-5xl text-3xl font-bold mb-8">
+            404 Error
+          </h2>
+          <div className="flex items-center space-x-2 text-white">
+            <Link href="/" className="text-white">Home</Link>
+            <span className="text-white"> &gt; </span>
+            <Link href="/about" className="text-orange-500">404</Link>
           </div>
+        </div>
+      </div>
 
 
 

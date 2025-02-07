@@ -38,56 +38,25 @@ const FAQPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full overflow-hidden">
-    {/* First Section: Image and Breadcrumb */}
-    <div className="relative font-[sans-serif] pt-20 before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
-      <Image
-        src="unsplash_4ycv3Ky1ZZU.png"
-        alt="Banner Image"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="min-h-[350px] relative z-50 h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center p-6">
-        <h2 className="text-white md:text-5xl text-3xl font-bold mb-8">
-          FAQ Page
-        </h2>
-        <div className="flex items-center space-x-2 text-white">
-          <Link href="/" className="text-white">Home</Link>
-          <span className="text-white"> &gt; </span>
-          <Link href="/menu" className="text-orange-500">faq</Link>
-        </div>
+    <div className="relative font-[sans-serif] pt-20 before:absolute before:w-full before:h-full before:inset-0 bg-black  before:z-[-10] "> {/* Adjusted mt */}
+    <Image
+      src="/unsplash_4ycv3Ky1ZZU.png"
+      alt="Banner Image"
+      width={500}
+      height={500}
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+    <div className="min-h-[350px] relative z-50 h-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center p-6 mt-[150px]">
+      <h2 className="text-white md:text-5xl text-3xl font-bold mb-8">
+        FAQ Page
+      </h2>
+      <div className="flex items-center space-x-2 text-white">
+        <Link href="/" className="text-white">Home</Link>
+        <span className="text-white"> &gt; </span>
+        <Link href="/about" className="text-orange-500">faq</Link>
       </div>
     </div>
-
-
-      <main className="max-w-4xl mx-auto py-16 px-4">
-        <h2 className="text-5xl font-bold text-center mb-8">Questions Looks Here</h2>
-        <p className="text-center text-gray-600 mb-12">
-          Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        </p>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {faqData.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white p-6 rounded-lg shadow-lg transition-transform duration-200"
-            >
-              <div
-                onClick={() => toggleFAQ(index)}
-                className="cursor-pointer flex justify-between items-center"
-              >
-                <h3 className="text-lg font-medium">{faq.question}</h3>
-                <span className="text-2xl">
-                  {openIndex === index ? '-' : '+'}
-                </span>
-              </div>
-              {openIndex === index && (
-                <p className="text-sm text-gray-600 mt-4">{faq.answer}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </main>
-    </div>
+  </div>
 
   );
 };
